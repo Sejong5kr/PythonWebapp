@@ -1,3 +1,5 @@
+This script is written by Sejong Oh to commemorate his old friend Python
+>>>
 Man: Is this the right room for an argument?
 Other Man: I've told you once.
 Man: No you haven't!
