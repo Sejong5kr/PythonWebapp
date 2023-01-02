@@ -13,6 +13,5 @@ def generateList():
         if st.button(athletes[each_t].name):
             selected=athletes[each_t].name
 
-    st.write('You selected '+ selected)
     return(selected)
 
