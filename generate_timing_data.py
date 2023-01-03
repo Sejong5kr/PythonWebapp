@@ -1,19 +1,29 @@
 import Athlete
 import streamlit as st
-import cgi
+import pandas as pd
 
 
 def fnGenerate_timing_data(selected):
     athletes=Athlete.get_from_store()
-    #form_data= cgi.FieldStorage()
-    #athlete_name= form_data[selected].value
-    
-    # for each_t in athletes : 
-    #     if athletes[each_t].name == selected:
-    #         st.write(athletes[each_t].top3())
 
     if selected in athletes : 
-        st.write(athletes[selected].top3())
+        sview= pd.Series(athletes[selected].top3())
+        st.write(sview)
+        
+
+def fnAddNewData(selected, input):
+    athletes=Athlete.get_from_store()
+    aName=''
+
+    if selected in athletes : 
+        aName=athletes[selected].name
+
+    aFile=aName+'.txt'
+    try:
+        with open(aFile, 'a') as f:
+            f.write(',{}'.format(input))
+    except IOError as e:
+        print('File error'+str(e))
 
 
 

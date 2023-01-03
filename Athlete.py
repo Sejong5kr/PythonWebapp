@@ -29,7 +29,8 @@ def getCoachData(fileName):
 
         clean_data=[]
         for each_t in data_list:
-            clean_data.append(sanitize(each_t.strip()))
+            if not each_t == '0.00':
+                clean_data.append(sanitize(each_t.strip()))
 
         return(AthleteList(clean_data.pop(0),clean_data.pop(0),clean_data))
 
@@ -63,6 +64,11 @@ def get_from_store():
 
     return(all_athletes)
 
+
+def get_names_from_store():
+    athletes = get_from_store()
+    response = [athletes[each_ath].name for each_ath in athletes]
+    return(response)
 
 
 
