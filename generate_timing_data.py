@@ -3,12 +3,12 @@ import streamlit as st
 import pandas as pd
 
 
-def fnGenerate_timing_data(selected):
+def fnGenerate_timing_data(col2, selected):
     athletes=Athlete.get_from_store()
 
     if selected in athletes : 
-        sview= pd.Series(athletes[selected].top3())
-        st.write(sview)
+        sview= pd.Series(athletes[selected].top7())
+        col2.write(sview)
         
 
 def fnAddNewData(selected, input):

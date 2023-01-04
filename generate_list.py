@@ -3,7 +3,7 @@ import Athlete
 import streamlit as st
 import sqlite3
 
-def generateList():
+def generateList(col1):
     data_files = glob.glob("*.txt")
     athletes= Athlete.put_to_store(data_files)
 
@@ -11,7 +11,7 @@ def generateList():
     cursor = connection.cursor()
 
     selected=''
-    st.write("Coach Sejong's List of Athletes")
+    col1.write("Coach Sejong's List of Athletes")
  
     for each_t in athletes : 
         name = athletes[each_t].name
@@ -20,7 +20,7 @@ def generateList():
         cursor.execute("INSERT INTO athletes (name, dob) VALUES (?,?)", (name, dob))
         connection.commit()
 
-        if st.button(name):
+        if col1.button(name):
             selected=name
 
     connection.close()

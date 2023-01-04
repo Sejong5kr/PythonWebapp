@@ -7,8 +7,8 @@ class AthleteList(list):
         self.dob=a_dob
         self.extend(a_times)
     
-    def top3(self):
-        return(sorted(set(self))[0:3])
+    def top7(self):
+        return(sorted(set(self))[0:7])
 
 def sanitize(time_string):
     if '-' in time_string:
